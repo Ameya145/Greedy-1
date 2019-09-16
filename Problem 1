@@ -1,0 +1,23 @@
+//Time complexity: O(n)
+//Space complexity: O(1)
+
+class Solution {
+    public boolean canJump(int[] nums) {
+        if(nums==null || nums.length<2){
+            return true;
+        }
+        if(nums[0]==0){
+            return false;
+        }
+        int jumps=nums[0];
+        jumps--;
+        for(int i=1;i<nums.length;i++){
+            jumps=Math.max(jumps,nums[i]);
+            if(jumps==0 && i!=nums.length-1){
+                return false;
+            }
+            jumps--;
+        }    
+        return true;
+    }
+}
